@@ -1,0 +1,7 @@
+---
+- name: system update
+  become: true
+  package:
+    name: "*"
+    state: latest
+    update_cache: yes

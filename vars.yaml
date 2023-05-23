@@ -1,0 +1,25 @@
+ansible_pkg_mgr: dnf
+ansible_localhost_warning: false
+ansible_inventory_unparsed_warning: false
+
+config_paths:
+  - src: "{{ playbook_dir }}/dotfiles/zshrc"
+    dest: "~/.zshrc"
+  - src: "{{ playbook_dir }}/dotfiles/bashrc"
+    dest: "~/.bashrc"
+  - src: "{{ playbook_dir }}/dotfiles/vimrc"
+    dest: "~/.vimrc"
+
+packages:
+  - vim
+  - neovim
+  - tmux
+  - git
+  - zsh
+  - zsh-syntax-highlighting
+  - virt-manager
+  - jetbrains-mono-fonts
+    #   - docker/compose: geerling role
+    #   - mcfly: curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sh -s -- --git cantino/mcfly
+    #   - kubectl: take script and port
+  

@@ -1,0 +1,7 @@
+---
+- name: enable rpm fusion
+  become: true
+  dnf:
+    name: "{{ packages }}"
+    state: present
+

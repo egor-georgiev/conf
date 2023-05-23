@@ -1,0 +1,27 @@
+---
+- name: setup workstation
+  hosts: localhost
+  connection: local
+
+  vars_files:
+    - vars.yaml
+
+  tasks:
+    #     - name: include tasks
+    #       include_tasks: "{{ item }}"
+    #       with_fileglob:
+    #         - tasks/*.yaml
+
+    - name: include tasks
+      find:
+        paths: "{{ playbook_dir }}/tasks"
+        patterns: "*.yaml"
+      register: task_files
+
+    - name: sort task files
+      set_fact:
+        sorted_task_files: "{{ task_files.files | sort(attribute='path') }}"
+
+    - name: include sorted tasks
+      include_tasks: "{{ item.path }}"
+      loop: "{{ sorted_task_files }}"
